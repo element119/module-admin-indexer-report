@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © element119. All rights reserved.
+ * See LICENCE.txt for licence details.
+ */
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceContainer name="content">
+            <!-- Before Indexer Grid -->
+            <container name="indexer.grid.before" htmlTag="div" htmlClass="indexer-grid-before" before="-">
+                <!-- Indexer Notices -->
+                <container name="indexer.notices" htmlTag="div" htmlClass="indexer-notice-wrapper">
+                    <block name="modes"
+                           template="Element119_AdminIndexerReport::notice/modes.phtml"/>
+                    <block name="locked-modes"
+                           template="Element119_AdminIndexerReport::notice/locked-modes.phtml"/>
+                    <block name="product-eav-indexer"
+                           template="Element119_AdminIndexerReport::notice/product-eav-indexer.phtml"/>
+                    <block name="application-lock"
+                           template="Element119_AdminIndexerReport::notice/application-lock.phtml"/>
+                </container>
+            </container>
+
+            <!-- After Indexer Grid -->
+            <container name="indexer.grid.after"
+                       htmlTag="div"
+                       htmlClass="indexer-grid-after"
+                       after="adminhtml.indexer.grid.container">
+                <block name="docs"
+                       template="Element119_AdminIndexerReport::info/docs.phtml"/>
+            </container>
+        </referenceContainer>
+    </body>
+</page>
