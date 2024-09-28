@@ -30,7 +30,32 @@
                        htmlClass="indexer-grid-after"
                        after="adminhtml.indexer.grid.container">
                 <block name="docs"
-                       template="Element119_AdminIndexerReport::info/docs.phtml"/>
+                       template="Element119_AdminIndexerReport::info/docs.phtml">
+                    <arguments>
+                        <argument name="links" xsi:type="array">
+                            <item name="indexer_intro" xsi:type="array">
+                                <item name="label" xsi:type="string">Introduction to Indexers</item>
+                                <item name="url" xsi:type="string">https://devdocs.mage-os.org/docs/main/indexers</item>
+                            </item>
+                            <item name="indexer_info" xsi:type="array">
+                                <item name="label" xsi:type="string">Indexing</item>
+                                <item name="url" xsi:type="string">https://developer.adobe.com/commerce/php/development/components/indexing/</item>
+                            </item>
+                            <item name="indexer_management" xsi:type="array">
+                                <item name="label" xsi:type="string">Index Management</item>
+                                <item name="url" xsi:type="string">https://experienceleague.adobe.com/en/docs/commerce-operations/configuration-guide/cli/manage-indexers</item>
+                            </item>
+                            <item name="indexer_best_practise_config" xsi:type="array">
+                                <item name="label" xsi:type="string">Best Practise Indexer Configuration</item>
+                                <item name="url" xsi:type="string">https://experienceleague.adobe.com/en/docs/commerce-operations/implementation-playbook/best-practices/maintenance/indexer-configuration</item>
+                            </item>
+                            <item name="indexer_optimisation" xsi:type="array">
+                                <item name="label" xsi:type="string">Indexer Optimisation</item>
+                                <item name="url" xsi:type="string">https://developer.adobe.com/commerce/php/development/components/indexing/optimization/</item>
+                            </item>
+                        </argument>
+                    </arguments>
+                </block>
             </container>
         </referenceContainer>
     </body>

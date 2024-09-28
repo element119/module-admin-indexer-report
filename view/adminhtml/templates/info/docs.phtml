@@ -11,6 +11,23 @@ use Magento\Framework\Escaper;
 /** @var Template $block */
 /** @var Escaper $escaper */
 ?>
-<div>
-    Hello World!
-</div>
+<?php if ($links = $block->getData('links')): ?>
+    <section id="indexer-docs-section">
+        <h2 class="indexer-header">
+            <?= $escaper->escapeHtml(__('Indexer Documentation')); ?>
+        </h2>
+
+        <ul class="indexer-docs-list">
+            <?php foreach ($links as $link): ?>
+                <li class="indexer-doc-item">
+                    <a href="<?= $escaper->escapeUrl($link['url']); ?>"
+                       title="<?= $escaper->escapeHtmlAttr(__($link['label'])); ?>"
+                       class="indexer-doc-link"
+                       target="_blank">
+                        <?= $escaper->escapeHtml(__($link['label'])); ?>
+                    </a>
+                </li>
+            <?php endforeach; ?>
+        </ul>
+    </section>
+<?php endif; ?>
