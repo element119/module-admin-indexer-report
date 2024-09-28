@@ -4,7 +4,7 @@
 
 </div>
 
-<h1 align="center">element119 | Module Name</h1>
+<h1 align="center">element119 | Admin Indexer Report</h1>
 
 ## 📝 Features
 ✔️ ...
@@ -13,7 +13,7 @@
 
 ✔️ ...
 
-✔️ Supports Hyvä and Luma based themes
+✔️ Theme agnostic
 
 ✔️ Built in accordance with Magento best practises
 
@@ -30,7 +30,7 @@
 ## 🔌 Installation
 Run the following command to *install* this module:
 ```bash
-composer require element119/module-name
+composer require element119/module-admin-indexer-report
 php bin/magento setup:upgrade
 ```
 
@@ -39,7 +39,7 @@ php bin/magento setup:upgrade
 ## ⏫ Updating
 Run the following command to *update* this module:
 ```bash
-composer update element119/module-name
+composer update element119/module-admin-indexer-report
 php bin/magento setup:upgrade
 ```
 
@@ -48,7 +48,7 @@ php bin/magento setup:upgrade
 ## ❌ Uninstallation
 Run the following command to *uninstall* this module:
 ```bash
-composer remove element119/module-name
+composer remove element119/module-admin-indexer-report
 php bin/magento setup:upgrade
 ```
 
