@@ -9,6 +9,7 @@ namespace Element119\AdminIndexerReport\Model;
 
 use Magento\Catalog\Model\Indexer\Product\Eav\AbstractAction as ProductEavIndexerAction;
 use Magento\Framework\App\Config\ScopeConfigInterface;
+use Magento\Framework\App\DeploymentConfig;
 use Magento\Indexer\Model\Indexer;
 use Magento\Indexer\Model\Indexer\CollectionFactory as IndexerCollectionFactory;
 
@@ -18,6 +19,7 @@ class IndexerInfo
 
     public function __construct(
         private readonly ScopeConfigInterface $scopeConfig,
+        private readonly DeploymentConfig $deploymentConfig,
         private readonly IndexerCollectionFactory $indexerCollectionFactory,
     ) {
     }
@@ -62,5 +64,14 @@ class IndexerInfo
     public function isProductEavIndexerEnabled(): bool
     {
         return $this->scopeConfig->isSetFlag(ProductEavIndexerAction::ENABLE_EAV_INDEXER);
+    }
+
+    public function isIndexerApplicationLockEnabled(): bool
+    {
+        $indexerConfig = $this->deploymentConfig->get('indexer');
+
+        return $indexerConfig
+            && array_key_exists('use_application_lock', $indexerConfig)
+            && $indexerConfig['use_application_lock'];
     }
 }
