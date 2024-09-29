@@ -12,9 +12,15 @@
             <!-- Before Indexer Grid -->
             <container name="indexer.grid.before" htmlTag="div" htmlClass="indexer-grid-before" before="-">
                 <!-- Indexer Notices -->
-                <container name="indexer.notices" htmlTag="div" htmlClass="indexer-notice-wrapper">
+                <container name="indexer.notices" htmlTag="section" htmlClass="indexer-notice-wrapper">
                     <block name="modes"
-                           template="Element119_AdminIndexerReport::notice/modes.phtml"/>
+                           template="Element119_AdminIndexerReport::notice/modes.phtml">
+                        <arguments>
+                            <argument name="indexer_report_view_model" xsi:type="object">
+                                Element119\AdminIndexerReport\ViewModel\IndexerReport
+                            </argument>
+                        </arguments>
+                    </block>
                     <block name="locked-modes"
                            template="Element119_AdminIndexerReport::notice/locked-modes.phtml"/>
                     <block name="product-eav-indexer"

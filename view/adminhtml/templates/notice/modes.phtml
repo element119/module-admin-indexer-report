@@ -5,12 +5,53 @@
  */
 declare(strict_types=1);
 
+use Element119\AdminIndexerReport\Model\IndexerInfo;
+use Element119\AdminIndexerReport\ViewModel\IndexerReport;
 use Magento\Backend\Block\Template;
+use Magento\Customer\Model\Customer as CustomerModel;
 use Magento\Framework\Escaper;
 
 /** @var Template $block */
 /** @var Escaper $escaper */
+/** @var IndexerReport $indexerReportViewModel */
+$indexerReportViewModel = $block->getData('indexer_report_view_model');
+
+/** @var IndexerInfo $indexerInfo */
+$indexerInfo = $indexerReportViewModel->getIndexerInfo();
+
+$realTimeIndexers = $indexerInfo->getRealTimeIndexers();
+$scheduledIndexers = $indexerInfo->getScheduledIndexers();
+
+$isCustomerGridRealTime = in_array(CustomerModel::CUSTOMER_GRID_INDEXER_ID, array_keys($realTimeIndexers));
+$realTimeIndexerCount = count($realTimeIndexers);
 ?>
-<div>
-    Hello World!
-</div>
+<?php if (!$isCustomerGridRealTime): ?>
+    <div class="indexer-notice warning">
+        <?= $escaper->escapeHtml(
+            __(
+                'The "Customer Grid" indexer is currently set to "Update by Schedule" while <a href="https://experienceleague.adobe.com/en/docs/commerce-operations/configuration-guide/cli/manage-indexers#set-the-indexer-mode" target="_blank">the recommended mode is "Update on Save"</a>.'
+            ),
+            ['a']
+        ); ?>
+    </div>
+<?php endif; ?>
+
+<?php if ($realTimeIndexerCount > 1 || (!$isCustomerGridRealTime && $realTimeIndexerCount)): ?>
+    <div class="indexer-notice warning">
+        <?= $escaper->escapeHtml(
+            __('The following indexers are currently set to "Update on Save" while the recommended mode is "Update by Schedule":')
+        ); ?>
+
+        <ul class="indexer-list">
+            <?php foreach ($realTimeIndexers as $id => $label): ?>
+                <?php if ($id === CustomerModel::CUSTOMER_GRID_INDEXER_ID): ?>
+                    <?php continue; ?>
+                <?php endif; ?>
+
+                <li class="indexer-list-item">
+                    <?= $escaper->escapeHtml(__($label)); ?>
+                </li>
+            <?php endforeach; ?>
+        </ul>
+    </div>
+<?php endif; ?>
