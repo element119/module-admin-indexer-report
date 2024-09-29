@@ -5,12 +5,20 @@
  */
 declare(strict_types=1);
 
+use Element119\AdminIndexerReport\ViewModel\IndexerReport;
 use Magento\Backend\Block\Template;
 use Magento\Framework\Escaper;
 
 /** @var Template $block */
 /** @var Escaper $escaper */
+/** @var IndexerReport $indexerReportViewModel */
+$indexerReportViewModel = $block->getData('indexer_report_view_model');
 ?>
-<div>
-    Hello World!
-</div>
+<?php if (!$indexerReportViewModel->isIndexerDeployConfigModuleInstalled()): ?>
+    <div class="indexer-notice warning">
+        <?= $escaper->escapeHtml(
+            __('Consider installing the free <a href="https://github.com/pykettk/module-indexer-deploy-config" target="_blank">Element119_IndexerDeployConfig</a> module to lock indexer modes - ensuring the correct indexer configuration is maintained.'),
+            ['a']
+        ); ?>
+    </div>
+<?php endif; ?>

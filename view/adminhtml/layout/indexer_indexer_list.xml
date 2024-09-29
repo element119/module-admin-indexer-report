@@ -22,7 +22,13 @@
                         </arguments>
                     </block>
                     <block name="locked-modes"
-                           template="Element119_AdminIndexerReport::notice/locked-modes.phtml"/>
+                           template="Element119_AdminIndexerReport::notice/locked-modes.phtml">
+                        <arguments>
+                            <argument name="indexer_report_view_model" xsi:type="object">
+                                Element119\AdminIndexerReport\ViewModel\IndexerReport
+                            </argument>
+                        </arguments>
+                    </block>
                     <block name="product-eav-indexer"
                            template="Element119_AdminIndexerReport::notice/product-eav-indexer.phtml"/>
                     <block name="application-lock"
