@@ -5,12 +5,33 @@
  */
 declare(strict_types=1);
 
+use Element119\AdminIndexerReport\Model\IndexerInfo;
+use Element119\AdminIndexerReport\ViewModel\IndexerReport;
 use Magento\Backend\Block\Template;
 use Magento\Framework\Escaper;
 
 /** @var Template $block */
 /** @var Escaper $escaper */
+/** @var IndexerReport $indexerReportViewModel */
+$indexerReportViewModel = $block->getData('indexer_report_view_model');
+
+/** @var IndexerInfo $indexerInfo */
+$indexerInfo = $indexerReportViewModel->getIndexerInfo();
 ?>
-<div>
-    Hello World!
-</div>
+<?php if ($indexerInfo->isProductEavIndexerEnabled()): ?>
+    <div class="indexer-notice warning">
+        <?= $escaper->escapeHtml(
+            __(
+                'Consider disabling the Product EAV Indexer to improve performance. This can be done by navigating to <code>Stores -> Settings -> Configuration -> Catalog -> Catalog -> Catalog Search</code> and setting <code>Enable EAV Indexer</code> to <code>No</code>.'
+            ),
+            ['code']
+        ); ?>
+        <br>
+        <?= $escaper->escapeHtml(
+            __(
+                'Please note that you cannot disable this indexer if there are modules that rely on it. <a href="https://developer.adobe.com/commerce/php/development/components/indexing/optimization/#eav-indexer-optimization" target="_blank">See the relevant documentation for more information.</a>.'
+            ),
+            ['a']
+        ); ?>
+    </div>
+<?php endif; ?>

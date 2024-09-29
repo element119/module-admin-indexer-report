@@ -7,6 +7,8 @@ declare(strict_types=1);
 
 namespace Element119\AdminIndexerReport\Model;
 
+use Magento\Catalog\Model\Indexer\Product\Eav\AbstractAction as ProductEavIndexerAction;
+use Magento\Framework\App\Config\ScopeConfigInterface;
 use Magento\Indexer\Model\Indexer;
 use Magento\Indexer\Model\Indexer\CollectionFactory as IndexerCollectionFactory;
 
@@ -15,6 +17,7 @@ class IndexerInfo
     private array $indexers = [];
 
     public function __construct(
+        private readonly ScopeConfigInterface $scopeConfig,
         private readonly IndexerCollectionFactory $indexerCollectionFactory,
     ) {
     }
@@ -54,5 +57,10 @@ class IndexerInfo
         }
 
         return $indexers;
+    }
+
+    public function isProductEavIndexerEnabled(): bool
+    {
+        return $this->scopeConfig->isSetFlag(ProductEavIndexerAction::ENABLE_EAV_INDEXER);
     }
 }
