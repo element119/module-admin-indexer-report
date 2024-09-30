@@ -9,6 +9,9 @@
         xsi:noNamespaceSchemaLocation="urn:magento:framework:Module/etc/module.xsd">
     <module name="Element119_AdminIndexerReport">
         <sequence>
+            <module name="Hyva_Admin"/>
+            <module name="Magento_Backend"/>
+            <module name="Magento_Catalog"/>
             <module name="Magento_Indexer"/>
         </sequence>
     </module>
