@@ -61,6 +61,22 @@ class IndexerInfo
         return $indexers;
     }
 
+    public function getIndexerBatchSizeDeploymentConfig(string $indexer): array|string
+    {
+        $indexerConfig = $this->deploymentConfig->get('indexer');
+
+        if ($indexerConfig
+            && array_key_exists('batch_size', $indexerConfig)
+            && array_key_exists($indexer, $indexerConfig['batch_size'])
+        ) {
+            $batchSize = $indexerConfig['batch_size'][$indexer];
+
+            return is_array($batchSize) ? $batchSize : (string)$batchSize;
+        }
+
+        return '';
+    }
+
     public function isProductEavIndexerEnabled(): bool
     {
         return $this->scopeConfig->isSetFlag(ProductEavIndexerAction::ENABLE_EAV_INDEXER);

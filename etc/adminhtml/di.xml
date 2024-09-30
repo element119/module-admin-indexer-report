@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © element119. All rights reserved.
+ * See LICENCE.txt for licence details.
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <type name="Element119\AdminIndexerReport\Block\Backend\Grid\Column\Renderer\BatchSize">
+        <arguments>
+            <argument name="indexerBatchSizeClassMap" xsi:type="array">
+                <!--
+                1. The array key must match the indexer ID
+                2. The object is the class that contains the relevant indexer batch size configuration
+                3. The batchSizeKeyName is the name of the argument containing the batch size value in the given object
+
+                @link https://developer.adobe.com/commerce/php/development/components/indexing/optimization/#batching-configuration
+                -->
+
+                <item name="catalog_category_product" xsi:type="array">
+                    <item name="object" xsi:type="object">Magento\Catalog\Model\Indexer\Category\Product\Action\Full</item>
+                    <item name="batchSizeKeyName" xsi:type="string">batchRowsCount</item>
+                </item>
+                <item name="cataloginventory_stock" xsi:type="array">
+                    <item name="object" xsi:type="object">Magento\CatalogInventory\Model\Indexer\Stock\Action\Full</item>
+                    <item name="batchSizeKeyName" xsi:type="string">batchRowsCount</item>
+                </item>
+                <item name="catalog_product_attribute" xsi:type="array">
+                    <item name="object" xsi:type="object">Magento\Catalog\Model\ResourceModel\Product\Indexer\Eav\BatchSizeCalculator</item>
+                    <item name="batchSizeKeyName" xsi:type="string">batchSizes</item>
+                </item>
+                <item name="catalog_product_price" xsi:type="array">
+                    <item name="object" xsi:type="object">Magento\Catalog\Model\ResourceModel\Product\Indexer\Price\BatchSizeCalculator</item>
+                    <item name="batchSizeKeyName" xsi:type="string">batchRowsCount</item>
+                </item>
+            </argument>
+        </arguments>
+    </type>
+</config>
