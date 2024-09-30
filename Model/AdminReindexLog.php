@@ -72,7 +72,7 @@ class AdminReindexLog extends AbstractModel implements AdminReindexLogInterface
     /**
      * @inheritDoc
      */
-    public function getSuccessfulIndexers(): string
+    public function getSuccessfulIndexers(): ?string
     {
         return $this->getData(self::SUCCESSFUL_INDEXERS);
     }
@@ -88,7 +88,7 @@ class AdminReindexLog extends AbstractModel implements AdminReindexLogInterface
     /**
      * @inheritDoc
      */
-    public function getUnsuccessfulIndexers(): string
+    public function getUnsuccessfulIndexers(): ?string
     {
         return $this->getData(self::UNSUCCESSFUL_INDEXERS);
     }

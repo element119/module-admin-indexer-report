@@ -49,9 +49,9 @@ interface AdminReindexLogInterface
     public function setExecutedAt(string $executedAt): self;
 
     /**
-     * @return string
+     * @return null|string
      */
-    public function getSuccessfulIndexers(): string;
+    public function getSuccessfulIndexers(): ?string;
 
     /**
      * @param string $indexers
@@ -60,9 +60,9 @@ interface AdminReindexLogInterface
     public function setSuccessfulIndexers(string $indexers): self;
 
     /**
-     * @return string
+     * @return null|string
      */
-    public function getUnsuccessfulIndexers(): string;
+    public function getUnsuccessfulIndexers(): ?string;
 
     /**
      * @param string $indexers
