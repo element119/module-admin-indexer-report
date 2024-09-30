@@ -54,9 +54,13 @@ class BatchSize extends AbstractRenderer
             }
         }
 
+        if (!$batchSize) {
+            return '';
+        }
+
         return is_array($batchSize)
             ? $this->flattenBatchSizeArray($batchSize)
-            : $batchSize;
+            : $this->formatBatchSize((int)$batchSize);
     }
 
     public function flattenBatchSizeArray(array $batchData): string
@@ -64,9 +68,14 @@ class BatchSize extends AbstractRenderer
         $batchSize = '';
 
         foreach ($batchData as $key => $value) {
-            $batchSize .= $key . ': ' . $value . '<br>';
+            $batchSize .= $key . ': ' . $this->formatBatchSize((int)$value) . '<br>';
         }
 
         return $batchSize;
+    }
+
+    public function formatBatchSize(int|string $batchSize): string
+    {
+        return number_format($batchSize);
     }
 }
