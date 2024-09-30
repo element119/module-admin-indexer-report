@@ -8,6 +8,20 @@
 <page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
       xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
     <body>
+        <!-- Add Reindex Action -->
+        <referenceBlock name="adminhtml.indexer.grid.grid.massaction">
+            <arguments>
+                <argument name="options" xsi:type="array">
+                    <item name="reindex" xsi:type="array">
+                        <item name="label" xsi:type="string" translate="true">Reindex Data</item>
+                        <item name="url" xsi:type="string">*/indexer/reindex</item>
+                        <item name="confirm" xsi:type="string" translate="true">Are you sure you want to reindex data for the selected indexer(s)? This operation will perform a full reindex which may take a long time and increase the load on the server, particularly for stores with large volumes of data.</item>
+                    </item>
+                </argument>
+            </arguments>
+        </referenceBlock>
+
+        <!-- Add Batch Size Column -->
         <referenceBlock name="adminhtml.indexer.grid.columnSet">
             <block class="Magento\Backend\Block\Widget\Grid\Column"
                    name="adminhtml.indexer.grid.columnSet.indexer_batch_size"
