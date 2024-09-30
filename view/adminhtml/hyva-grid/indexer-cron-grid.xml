@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © element119. All rights reserved.
+ * See LICENCE.txt for licence details.
+ */
+ -->
+<grid xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:noNamespaceSchemaLocation="urn:magento:module:Hyva_Admin:etc/hyva-grid.xsd">
+    <source>
+        <arrayProvider>Element119\AdminIndexerReport\Ui\DataProvider\IndexerCronData</arrayProvider>
+    </source>
+    <columns>
+        <include>
+            <column name="schedule_id"/>
+            <column name="job_code" type="long_text"/>
+            <column name="status"/>
+            <column name="messages" type="long_text"/>
+            <column name="created_at"/>
+            <column name="scheduled_at"/>
+            <column name="executed_at"/>
+            <column name="finished_at"/>
+        </include>
+    </columns>
+    <navigation>
+        <filters>
+            <filter column="schedule_id"/>
+            <filter column="job_code"/>
+            <filter column="status"/>
+            <filter column="messages"/>
+            <filter column="created_at"/>
+            <filter column="scheduled_at"/>
+            <filter column="executed_at"/>
+            <filter column="finished_at"/>
+        </filters>
+        <pager>
+            <defaultPageSize>20</defaultPageSize>
+            <pageSizes>20,30,50,100,200</pageSizes>
+        </pager>
+        <sorting>
+            <defaultSortByColumn>schedule_id</defaultSortByColumn>
+            <defaultSortDirection>desc</defaultSortDirection>
+        </sorting>
+    </navigation>
+</grid>

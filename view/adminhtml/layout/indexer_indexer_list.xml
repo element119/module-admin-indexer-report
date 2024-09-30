@@ -7,6 +7,7 @@
 -->
 <page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
       xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <update handle="hyva_admin_grid"/>
     <body>
         <referenceContainer name="content">
             <!-- Before Indexer Grid -->
@@ -53,6 +54,7 @@
                        htmlTag="div"
                        htmlClass="indexer-grid-after"
                        after="adminhtml.indexer.grid.container">
+                <!-- Docs -->
                 <block name="docs"
                        template="Element119_AdminIndexerReport::info/docs.phtml">
                     <arguments>
@@ -79,6 +81,15 @@
                             </item>
                         </argument>
                     </arguments>
+                </block>
+
+                <!-- Cron -->
+                <block name="cron" template="Element119_AdminIndexerReport::info/cron.phtml">
+                    <block class="Hyva\Admin\Block\Adminhtml\HyvaGrid" name="indexer-cron-grid">
+                        <arguments>
+                            <argument name="grid_name" xsi:type="string">indexer-cron-grid</argument>
+                        </arguments>
+                    </block>
                 </block>
             </container>
         </referenceContainer>
