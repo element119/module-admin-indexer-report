@@ -16,7 +16,9 @@ use Magento\Framework\Escaper;
         <h2 class="indexer-header">
             <?= $escaper->escapeHtml(__('Indexer Documentation')); ?>
         </h2>
-
+        <p>
+            <?= $escaper->escapeHtml(__('See the links below for more information about indexers:')); ?>
+        </p>
         <ul class="indexer-docs-list">
             <?php foreach ($links as $link): ?>
                 <li class="indexer-doc-item">
