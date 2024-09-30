@@ -1,0 +1,50 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © element119. All rights reserved.
+ * See LICENCE.txt for licence details.
+ */
+-->
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
+    <table name="e119_admin_reindex_history"
+           resource="default"
+           engine="innodb"
+           comment="Admin Reindex History">
+        <column name="log_id"
+                xsi:type="int"
+                unsigned="true"
+                nullable="false"
+                identity="true"
+                comment="Log ID"/>
+        <column name="admin_id"
+                xsi:type="int"
+                unsigned="true"
+                nullable="false"
+                comment="Admin User ID"/>
+        <column name="successful_indexers"
+                xsi:type="text"
+                nullable="true"
+                comment="Successful Indexers"/>
+        <column name="unsuccessful_indexers"
+                xsi:type="text"
+                nullable="true"
+                comment="Unsuccessful Indexers"/>
+        <column name="executed_at"
+                xsi:type="timestamp"
+                on_update="false"
+                nullable="false"
+                default="CURRENT_TIMESTAMP"
+                comment="Execution Timestamp"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="log_id"/>
+        </constraint>
+        <constraint xsi:type="foreign"
+                    referenceId="E119_ADMIN_REINDEX_HISTORY_LOG_ADMIN_ID_ADMIN_USER_USER_ID"
+                    table="e119_admin_reindex_history"
+                    column="admin_id"
+                    referenceTable="admin_user"
+                    referenceColumn="user_id"
+                    onDelete="CASCADE"/>
+    </table>
+</schema>

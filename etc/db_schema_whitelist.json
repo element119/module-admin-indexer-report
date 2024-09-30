@@ -1,0 +1,15 @@
+{
+    "e119_admin_reindex_history": {
+        "column": {
+            "log_id": true,
+            "admin_id": true,
+            "successful_indexers": true,
+            "unsuccessful_indexers": true,
+            "executed_at": true
+        },
+        "constraint": {
+            "PRIMARY": true,
+            "E119_ADMIN_REINDEX_HISTORY_ADMIN_ID_ADMIN_USER_USER_ID": true
+        }
+    }
+}
