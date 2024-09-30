@@ -1,0 +1,22 @@
+<?php
+/**
+ * Copyright © element119. All rights reserved.
+ * See LICENCE.txt for licence details.
+ */
+declare(strict_types=1);
+
+use Magento\Backend\Block\Template;
+use Magento\Framework\Escaper;
+
+/** @var Template $block */
+/** @var Escaper $escaper */
+?>
+<?php if ($reindexLogGrid = $block->getChildHtml('admin-reindex-log-grid')): ?>
+    <section id="reindex-log-grid-section">
+        <h2 class="indexer-header">
+            <?= $escaper->escapeHtml(__('Admin Reindex Log')); ?>
+        </h2>
+
+        <?= /** @noEscape */ $reindexLogGrid; ?>
+    </section>
+<?php endif; ?>

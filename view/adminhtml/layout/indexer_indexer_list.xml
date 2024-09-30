@@ -91,6 +91,15 @@
                         </arguments>
                     </block>
                 </block>
+
+                <!-- Admin Reindex Log -->
+                <block name="admin-reindex-log" template="Element119_AdminIndexerReport::info/reindex-log.phtml">
+                    <block class="Hyva\Admin\Block\Adminhtml\HyvaGrid" name="admin-reindex-log-grid">
+                        <arguments>
+                            <argument name="grid_name" xsi:type="string">admin-reindex-log-grid</argument>
+                        </arguments>
+                    </block>
+                </block>
             </container>
         </referenceContainer>
     </body>

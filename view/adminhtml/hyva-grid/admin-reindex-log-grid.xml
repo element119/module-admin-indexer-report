@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © element119. All rights reserved.
+ * See LICENCE.txt for licence details.
+ */
+ -->
+<grid xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:noNamespaceSchemaLocation="urn:magento:module:Hyva_Admin:etc/hyva-grid.xsd">
+    <source>
+        <arrayProvider>Element119\AdminIndexerReport\Ui\DataProvider\AdminReindexLog</arrayProvider>
+        <processors>
+            <processor class="Element119\AdminIndexerReport\HyvaGridProcessor\IndexerListProcessor"/>
+        </processors>
+    </source>
+    <columns>
+        <include>
+            <column name="log_id"/>
+            <column name="admin_name" type="long_text"/>
+            <column name="successful_indexers" type="long_text" renderAsUnsecureHtml="true"/>
+            <column name="unsuccessful_indexers" type="long_text" renderAsUnsecureHtml="true"/>
+            <column name="executed_at"/>
+        </include>
+    </columns>
+    <navigation>
+        <filters>
+            <filter column="admin_name"/>
+            <filter column="successful_indexers"/>
+            <filter column="unsuccessful_indexers"/>
+            <filter column="executed_at"/>
+        </filters>
+        <pager>
+            <defaultPageSize>20</defaultPageSize>
+            <pageSizes>20,30,50,100,200</pageSizes>
+        </pager>
+        <sorting>
+            <defaultSortByColumn>log_id</defaultSortByColumn>
+            <defaultSortDirection>desc</defaultSortDirection>
+        </sorting>
+    </navigation>
+</grid>
