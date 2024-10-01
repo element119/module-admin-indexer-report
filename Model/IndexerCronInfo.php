@@ -13,6 +13,8 @@ use Zend_Db_Statement_Exception;
 
 class IndexerCronInfo
 {
+    private array $monitoredIndexerCronJobs = [];
+
     public function __construct(
         private readonly ResourceConnection $resourceConnection,
         private readonly LoggerInterface $logger,
@@ -28,7 +30,7 @@ class IndexerCronInfo
         $connection = $this->resourceConnection->getConnection();
         $indexerCronSelect = $connection->select()
             ->from($this->resourceConnection->getTableName('cron_schedule'), $cronScheduleColumns)
-            ->where('job_code IN (?)', $this->getEnabledOptions($this->indexerCronJobs));
+            ->where('job_code IN (?)', $this->getMonitoredIndexerCronJobs());
 
         try {
             $data = $connection->query($indexerCronSelect)->fetchAll();
@@ -39,6 +41,15 @@ class IndexerCronInfo
         }
 
         return $data ?: [array_fill_keys($cronScheduleColumns, __('N/A'))];
+    }
+
+    public function getMonitoredIndexerCronJobs(): array
+    {
+        if (!$this->monitoredIndexerCronJobs) {
+            $this->monitoredIndexerCronJobs = $this->getEnabledOptions($this->indexerCronJobs);
+        }
+
+        return $this->monitoredIndexerCronJobs;
     }
 
     private function getEnabledOptions(array $options): array

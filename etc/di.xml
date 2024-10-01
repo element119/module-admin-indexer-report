@@ -14,4 +14,42 @@
                 type="Magento\Framework\Api\SearchResults"/>
     <preference for="Element119\AdminIndexerReport\Api\AdminReindexLogRepositoryInterface"
                 type="Element119\AdminIndexerReport\Model\AdminReindexLogRepository"/>
+
+    <!-- Type Configuration -->
+    <!-- Indexer Cron Report -->
+    <type name="Element119\AdminIndexerReport\Model\IndexerCronInfo">
+        <arguments>
+            <!--
+            List of cron_schedule table columns to display in the indexer-related cron report(s). Set the item name as
+            the column name and the boolean value to flag whether to include the column or not. Note that the related
+            grid configuration file may need to be updated when columns are added or removed.
+
+            This configuration will be redundant if/when the Hyvä module allows SQL "WHERE" clauses to be included as
+            part of the query grid source type.
+
+            @see view/adminhtml/hyva-grid/indexer-cron-grid.xml
+            @link https://github.com/hyva-themes/magento2-hyva-admin/blob/main/docs/guides/hyva-admin-grid-walkthrough/configuring-columns.md
+            -->
+            <argument name="cronScheduleColumns" xsi:type="array">
+                <item name="schedule_id" xsi:type="boolean">true</item>
+                <item name="job_code" xsi:type="boolean">true</item>
+                <item name="status" xsi:type="boolean">true</item>
+                <item name="messages" xsi:type="boolean">true</item>
+                <item name="created_at" xsi:type="boolean">true</item>
+                <item name="scheduled_at" xsi:type="boolean">true</item>
+                <item name="executed_at" xsi:type="boolean">true</item>
+                <item name="finished_at" xsi:type="boolean">true</item>
+            </argument>
+
+            <!--
+            List of indexer-related cron jobs to report on. Set the item name as the cron job name and the boolean value
+            to flag whether to report on the job or not.
+            -->
+            <argument name="indexerCronJobs" xsi:type="array">
+                <item name="indexer_clean_all_changelogs" xsi:type="boolean">true</item>
+                <item name="indexer_reindex_all_invalid" xsi:type="boolean">true</item>
+                <item name="indexer_update_all_views" xsi:type="boolean">true</item>
+            </argument>
+        </arguments>
+    </type>
 </config>
