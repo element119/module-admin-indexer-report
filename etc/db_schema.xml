@@ -47,4 +47,26 @@
                     referenceColumn="user_id"
                     onDelete="CASCADE"/>
     </table>
+    <table name="e119_indexer_cron_history"
+           resource="default"
+           engine="innodb"
+           comment="Indexer Cron History">
+        <column name="log_id"
+                xsi:type="int"
+                unsigned="true"
+                nullable="false"
+                identity="true"
+                comment="Log ID"/>
+        <column name="date"
+                xsi:type="date"
+                nullable="false"
+                comment="Log Date"/>
+        <column name="job_data"
+                xsi:type="text"
+                nullable="true"
+                comment="Job Data"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="log_id"/>
+        </constraint>
+    </table>
 </schema>

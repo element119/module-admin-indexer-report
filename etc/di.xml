@@ -14,6 +14,12 @@
                 type="Magento\Framework\Api\SearchResults"/>
     <preference for="Element119\AdminIndexerReport\Api\AdminReindexLogRepositoryInterface"
                 type="Element119\AdminIndexerReport\Model\AdminReindexLogRepository"/>
+    <preference for="Element119\AdminIndexerReport\Api\Data\IndexerCronHistoryLogInterface"
+                type="Element119\AdminIndexerReport\Model\IndexerCronHistoryLog"/>
+    <preference for="Element119\AdminIndexerReport\Api\Data\IndexerCronHistoryLogSearchResultsInterface"
+                type="Magento\Framework\Api\SearchResults"/>
+    <preference for="Element119\AdminIndexerReport\Api\IndexerCronHistoryLogRepositoryInterface"
+                type="Element119\AdminIndexerReport\Model\IndexerCronHistoryLogRepository"/>
 
     <!-- Type Configuration -->
     <!-- Indexer Cron Report -->

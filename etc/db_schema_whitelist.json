@@ -11,5 +11,15 @@
             "PRIMARY": true,
             "E119_ADMIN_REINDEX_HISTORY_ADMIN_ID_ADMIN_USER_USER_ID": true
         }
+    },
+    "e119_indexer_cron_history": {
+        "column": {
+            "log_id": true,
+            "job_data": true,
+            "date": true
+        },
+        "constraint": {
+            "PRIMARY": true
+        }
     }
 }
