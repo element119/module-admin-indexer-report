@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © element119. All rights reserved.
+ * See LICENCE.txt for licence details.
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Cron:etc/cron_groups.xsd">
+    <group id="index">
+        <!--
+        Maintain indexer cron data for 1 day + 10 minutes to ensure there's enough time for our data logging cron to run
+        so that it can be stored in our (more permanent) custom table for temporal analysis.
+        -->
+        <history_cleanup_every>1450</history_cleanup_every>
+        <history_success_lifetime>1450</history_success_lifetime>
+    </group>
+</config>
