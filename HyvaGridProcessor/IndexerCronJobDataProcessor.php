@@ -34,10 +34,11 @@ class IndexerCronJobDataProcessor extends AbstractGridSourceProcessor
         $html = '';
 
         foreach ($jobData as $status => $data) {
-            $html .= '<b>' . $status . ':</b><br>';
+            $html .= '<b>' . ucfirst($status) . ':</b><br>';
 
             foreach ($data as $jobCode => $cronScheduleIds) {
                 $html .= '<span class="job-code">' . $jobCode . ':</span><br>';
+                $html .= '<span class="schedule-ids-label">' . __('Schedule ID(s)') . '</span>';
                 $html .= '<ul class="cron-id-list">';
 
                 foreach ($cronScheduleIds as $id) {

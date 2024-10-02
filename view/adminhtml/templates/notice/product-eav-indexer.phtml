@@ -19,7 +19,7 @@ $indexerReportViewModel = $block->getData('indexer_report_view_model');
 $indexerInfo = $indexerReportViewModel->getIndexerInfo();
 ?>
 <?php if ($indexerInfo->isProductEavIndexerEnabled()): ?>
-    <div class="indexer-notice warning">
+    <div class="indexer-notice warning message">
         <?= $escaper->escapeHtml(
             __(
                 'Consider disabling the Product EAV Indexer to improve performance. This can be done by navigating to <code>Stores -> Settings -> Configuration -> Catalog -> Catalog -> Catalog Search</code> and setting <code>Enable EAV Indexer</code> to <code>No</code>.'

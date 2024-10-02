@@ -15,7 +15,7 @@ use Magento\Framework\Escaper;
 $indexerReportViewModel = $block->getData('indexer_report_view_model');
 ?>
 <?php if (!$indexerReportViewModel->isIndexerDeployConfigModuleInstalled()): ?>
-    <div class="indexer-notice warning">
+    <div class="indexer-notice warning message">
         <?= $escaper->escapeHtml(
             __('Consider installing the free <a href="https://github.com/pykettk/module-indexer-deploy-config" target="_blank">Element119_IndexerDeployConfig</a> module to lock indexer modes - ensuring the correct indexer configuration is maintained.'),
             ['a']

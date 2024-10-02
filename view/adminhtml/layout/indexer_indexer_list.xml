@@ -8,6 +8,9 @@
 <page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
       xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
     <update handle="hyva_admin_grid"/>
+    <head>
+        <css src="Element119_AdminIndexerReport::css/module.css"/>
+    </head>
     <body>
         <referenceContainer name="content">
             <!-- Before Indexer Grid -->

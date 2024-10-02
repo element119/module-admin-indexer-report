@@ -19,7 +19,7 @@ $indexerReportViewModel = $block->getData('indexer_report_view_model');
 $indexerInfo = $indexerReportViewModel->getIndexerInfo();
 ?>
 <?php if (!$indexerInfo->isIndexerApplicationLockEnabled()): ?>
-    <div class="indexer-notice warning">
+    <div class="indexer-notice warning message">
         <?= $escaper->escapeHtml(__('Consider enabling the application lock mode for indexers to help them attempt to recover after experiencing a failure and provide developers with a more accurate status of the indexer in those failed states.')); ?>
         <br>
         <a href="https://developer.adobe.com/commerce/php/development/components/indexing/#using-application-lock-mode-for-reindex-processes"

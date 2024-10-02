@@ -1,0 +1,75 @@
+/**
+ * Copyright © element119. All rights reserved.
+ * See LICENCE.txt for licence details.
+ */
+.indexer-notice {
+    background-color: #fffbbb;
+    border: 1px solid #d1d1d1;
+    padding: 1.5rem 1.5rem 1.5rem 5rem;
+}
+
+.indexer-header {
+    font-size: 2.5rem;
+    font-weight: 600;
+}
+
+section[id$="-section"] {
+    border-radius: 1rem;
+    margin-bottom: 4rem;
+    padding: 2rem;
+
+    .table-container {
+        tbody {
+            background-color: white;
+
+            td[class^="col-"] {
+                vertical-align: top;
+            }
+        }
+    }
+}
+
+#indexer-cron-grid-section {
+    background-color: #ecfdf5;
+    border: 2px solid #10b981;
+}
+
+#cron-history-grid-section {
+    background-color: #eff6ff;
+    border: 2px solid #3b83f6;
+
+    .job-code {
+        padding-left: 2rem;
+    }
+
+    .schedule-ids-label {
+        padding-left: 4rem;
+    }
+
+    .cron-id-list {
+        list-style-type: disc;
+        padding-left: 8rem;
+    }
+}
+
+#reindex-log-grid-section {
+    background-color: #fffbeb;
+    border: 2px solid #f59f0b;
+}
+
+#indexer-docs-section {
+    background-color: #fdf5ff;
+    border: 2px solid #d846ef;
+}
+
+.indexer-notice a,
+#indexer-docs-section a {
+    color: #007bdb;
+    text-decoration: underline;
+}
+
+.indexer-notice .indexer-list,
+#indexer-docs-section .indexer-docs-list {
+    list-style-type: disc;
+    padding-left: 3rem;
+}

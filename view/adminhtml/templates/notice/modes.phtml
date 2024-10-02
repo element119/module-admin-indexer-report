@@ -26,7 +26,7 @@ $isCustomerGridRealTime = in_array(CustomerModel::CUSTOMER_GRID_INDEXER_ID, arra
 $realTimeIndexerCount = count($realTimeIndexers);
 ?>
 <?php if (!$isCustomerGridRealTime): ?>
-    <div class="indexer-notice warning">
+    <div class="indexer-notice warning message">
         <?= $escaper->escapeHtml(
             __(
                 'The "Customer Grid" indexer is currently set to "Update by Schedule" while <a href="https://experienceleague.adobe.com/en/docs/commerce-operations/configuration-guide/cli/manage-indexers#set-the-indexer-mode" target="_blank">the recommended mode is "Update on Save"</a>.'
@@ -37,7 +37,7 @@ $realTimeIndexerCount = count($realTimeIndexers);
 <?php endif; ?>
 
 <?php if ($realTimeIndexerCount > 1 || (!$isCustomerGridRealTime && $realTimeIndexerCount)): ?>
-    <div class="indexer-notice warning">
+    <div class="indexer-notice warning message">
         <?= $escaper->escapeHtml(
             __('The following indexers are currently set to "Update on Save" while the recommended mode is "Update by Schedule":')
         ); ?>
