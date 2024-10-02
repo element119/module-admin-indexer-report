@@ -68,7 +68,7 @@ class IndexerCronHistoryLog extends AbstractModel implements IndexerCronHistoryL
      */
     public function getLogId(): int
     {
-        return $this->getData(self::LOG_ID);
+        return (int)$this->getData(self::LOG_ID);
     }
 
     /**
