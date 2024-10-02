@@ -7,6 +7,9 @@ declare(strict_types=1);
 
 namespace Element119\AdminIndexerReport\Model;
 
+use Element119\AdminIndexerReport\Api\IndexerCronHistoryLogRepositoryInterface;
+use Magento\Framework\Api\SearchCriteriaBuilder;
+use Magento\Framework\Api\SearchCriteriaBuilderFactory;
 use Magento\Framework\App\ResourceConnection;
 use Psr\Log\LoggerInterface;
 use Zend_Db_Statement_Exception;
@@ -16,6 +19,8 @@ class IndexerCronInfo
     private array $monitoredIndexerCronJobs = [];
 
     public function __construct(
+        private readonly IndexerCronHistoryLogRepositoryInterface $indexerCronHistoryLogRepository,
+        private readonly SearchCriteriaBuilderFactory $searchCriteriaBuilderFactory,
         private readonly ResourceConnection $resourceConnection,
         private readonly LoggerInterface $logger,
         private readonly array $cronScheduleColumns = [],
@@ -41,6 +46,15 @@ class IndexerCronInfo
         }
 
         return $data ?: [array_fill_keys($cronScheduleColumns, __('N/A'))];
+    }
+
+    public function getIndexerCronHistoryLogs(): array
+    {
+        /** @var SearchCriteriaBuilder $searchCriteriaBuilder */
+        $searchCriteriaBuilder = $this->searchCriteriaBuilderFactory->create();
+        $searchCriteria = $searchCriteriaBuilder->create();
+
+        return $this->indexerCronHistoryLogRepository->getList($searchCriteria)->getItems();
     }
 
     public function getMonitoredIndexerCronJobs(): array
