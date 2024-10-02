@@ -7,6 +7,7 @@ declare(strict_types=1);
 
 namespace Element119\AdminIndexerReport\Model;
 
+use DateTime;
 use Element119\AdminIndexerReport\Api\Data\IndexerCronHistoryLogInterface;
 use Element119\AdminIndexerReport\Api\Data\IndexerCronHistoryLogInterfaceFactory;
 use Element119\AdminIndexerReport\Api\Data\IndexerCronHistoryLogSearchResultsInterfaceFactory;
@@ -15,11 +16,14 @@ use Element119\AdminIndexerReport\Model\ResourceModel\IndexerCronHistoryLog as I
 use Element119\AdminIndexerReport\Model\ResourceModel\IndexerCronHistoryLog\CollectionFactory as IndexerCronHistoryLogCollectionFactory;
 use Exception;
 use Magento\Framework\Api\SearchCriteria\CollectionProcessorInterface;
+use Magento\Framework\Api\SearchCriteriaBuilder;
+use Magento\Framework\Api\SearchCriteriaBuilderFactory;
 use Magento\Framework\Api\SearchCriteriaInterface;
 use Magento\Framework\Api\SearchResults;
 use Magento\Framework\Exception\CouldNotDeleteException;
 use Magento\Framework\Exception\CouldNotSaveException;
 use Magento\Framework\Exception\NoSuchEntityException;
+use Magento\Framework\Stdlib\DateTime as MagentoDateTime;
 
 class IndexerCronHistoryLogRepository implements IndexerCronHistoryLogRepositoryInterface
 {
@@ -29,6 +33,7 @@ class IndexerCronHistoryLogRepository implements IndexerCronHistoryLogRepository
         private readonly IndexerCronHistoryLogResource $resource,
         private readonly IndexerCronHistoryLogSearchResultsInterfaceFactory $searchResultsFactory,
         private readonly CollectionProcessorInterface $collectionProcessor,
+        private readonly SearchCriteriaBuilderFactory $searchCriteriaBuilderFactory,
     ) {
     }
 
@@ -59,6 +64,20 @@ class IndexerCronHistoryLogRepository implements IndexerCronHistoryLogRepository
         }
 
         return $indexerCronHistoryLog;
+    }
+
+
+    public function getByDate(string $date): array
+    {
+        /** @var SearchCriteriaBuilder $searchCriteriaBuilder */
+        $searchCriteriaBuilder = $this->searchCriteriaBuilderFactory->create();
+        $searchCriteria = $searchCriteriaBuilder->addFilter(
+            IndexerCronHistoryLogInterface::DATE,
+            (new DateTime($date))->format(MagentoDateTime::DATE_PHP_FORMAT),
+            'eq'
+        )->create();
+
+        return $this->getList($searchCriteria)->getItems();
     }
 
     /**

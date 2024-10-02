@@ -33,6 +33,12 @@ interface IndexerCronHistoryLogRepositoryInterface
     public function getById(int $logId): IndexerCronHistoryLogInterface;
 
     /**
+     * @param string $date
+     * @return array
+     */
+    public function getByDate(string $date): array;
+
+    /**
      * @param SearchCriteriaInterface $searchCriteria
      * @return SearchResults
      */
