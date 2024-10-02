@@ -100,6 +100,16 @@
                         </arguments>
                     </block>
                 </block>
+
+                <!-- Cron History Log -->
+                <block name="reindex-cron-history-log"
+                       template="Element119_AdminIndexerReport::info/cron-history.phtml">
+                    <block class="Hyva\Admin\Block\Adminhtml\HyvaGrid" name="cron-history-log-grid">
+                        <arguments>
+                            <argument name="grid_name" xsi:type="string">cron-history-log-grid</argument>
+                        </arguments>
+                    </block>
+                </block>
             </container>
         </referenceContainer>
     </body>

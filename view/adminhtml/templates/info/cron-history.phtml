@@ -1,0 +1,22 @@
+<?php
+/**
+ * Copyright © element119. All rights reserved.
+ * See LICENCE.txt for licence details.
+ */
+declare(strict_types=1);
+
+use Magento\Backend\Block\Template;
+use Magento\Framework\Escaper;
+
+/** @var Template $block */
+/** @var Escaper $escaper */
+?>
+<?php if ($cronHistoryGrid = $block->getChildHtml('cron-history-log-grid')): ?>
+    <section id="cron-history-grid-section">
+        <h2 class="indexer-header">
+            <?= $escaper->escapeHtml(__('Indexer Cron History')); ?>
+        </h2>
+
+        <?= /** @noEscape */ $cronHistoryGrid; ?>
+    </section>
+<?php endif; ?>
