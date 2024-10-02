@@ -15,8 +15,17 @@
         <referenceContainer name="content">
             <!-- Before Indexer Grid -->
             <container name="indexer.grid.before" htmlTag="div" htmlClass="indexer-grid-before" before="-">
+                <block name="notice-link" template="Element119_AdminIndexerReport::notice/link.phtml"/>
+            </container>
+
+            <!-- After Indexer Grid -->
+            <container name="indexer.grid.after"
+                       htmlTag="div"
+                       htmlClass="indexer-grid-after"
+                       after="adminhtml.indexer.grid.container">
                 <!-- Indexer Notices -->
-                <container name="indexer.notices" htmlTag="section" htmlClass="indexer-notice-wrapper">
+                <!-- Pseudo-container to ease notice section link implementation -->
+                <block name="indexer.notices" template="Element119_AdminIndexerReport::notice/wrapper.phtml">
                     <block name="modes"
                            template="Element119_AdminIndexerReport::notice/modes.phtml">
                         <arguments>
@@ -49,14 +58,8 @@
                             </argument>
                         </arguments>
                     </block>
-                </container>
-            </container>
+                </block>
 
-            <!-- After Indexer Grid -->
-            <container name="indexer.grid.after"
-                       htmlTag="div"
-                       htmlClass="indexer-grid-after"
-                       after="adminhtml.indexer.grid.container">
                 <!-- Cron -->
                 <block name="cron" template="Element119_AdminIndexerReport::info/cron.phtml">
                     <block class="Hyva\Admin\Block\Adminhtml\HyvaGrid" name="indexer-cron-grid">

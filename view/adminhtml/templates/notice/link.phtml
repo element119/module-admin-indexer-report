@@ -1,0 +1,33 @@
+<?php
+/**
+ * Copyright © element119. All rights reserved.
+ * See LICENCE.txt for licence details.
+ */
+declare(strict_types=1);
+
+use Magento\Backend\Block\Template;
+use Magento\Framework\Escaper;
+
+/** @var Template $block */
+/** @var Escaper $escaper */
+?>
+<?php if ($block->getBlockHtml('indexer.notices')): ?>
+    <div class="indexer-notice warning message">
+        <a id="indexer-notices-link"
+           href="#indexer-notices-wrapper"
+           aria-label="<?= $escaper->escapeHtmlAttr(__('Review indexer notices.')); ?>">
+            <?= $escaper->escapeHtml(__('Review indexer notices.')); ?>
+        </a>
+        <script>
+            document.getElementById('indexer-notices-link').addEventListener('click', (event) => {
+                event.preventDefault();
+
+                const element = document.querySelector(event.target.getAttribute('href'));
+
+                if (element) {
+                    element.scrollIntoView({behavior: 'smooth'});
+                }
+            });
+        </script>
+    </div>
+<?php endif; ?>
